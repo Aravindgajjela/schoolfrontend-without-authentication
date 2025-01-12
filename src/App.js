@@ -1,33 +1,27 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css'; // Import the global styles
-import TransactionsOverview from './components/TransactionsOverview';
-import TransactionDetails from './components/TransactionDetails';
-import TransactionStatus from './components/TransactionStatus';
-import DarkModeToggle from './components/DarkModeToggle';
-import RealTimeChart from './components/RealTimeChart';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Fixed import of Navigate
+import './App.css';
+import Login from './components/Login'; // Corrected import (uppercase 'L')
+import Logout from './components/Logout'; // Corrected import (uppercase 'L')
+import Dashboard from './components/Dashboard';  // Assuming you have a Dashboard component
 
-const App = () => {
-  return (
-    <Router>
-      <div className="App">
-        {/* Dark Mode Toggle */}
-        <DarkModeToggle />
-        
-        {/* Main Content */}
-        <div className="container mt-4">
-          <h1>School Payments Dashboard</h1>
-          <Routes>
-            {/* Define Routes for Different Components */}
-            <Route path="/" element={<TransactionsOverview />} />
-            <Route path="/transactions-by-school" element={<TransactionDetails />} />
-            <Route path="/transaction-status" element={<TransactionStatus />} />
-            <Route path="/real-time-chart" element={<RealTimeChart />} />
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Routes> {/* Use Routes instead of Switch */}
+            {/* Define routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Navigate to="/login" />} /> {/* Use Navigate instead of Redirect */}
           </Routes>
         </div>
-      </div>
-    </Router>
-  );
-};
+      </Router>
+    );
+  }
+}
 
 export default App;
