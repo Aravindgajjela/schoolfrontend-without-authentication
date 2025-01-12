@@ -2,9 +2,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Fixed import of Navigate
 import './App.css';
-import Login from './components/Login'; // Corrected import (uppercase 'L')
-import Logout from './components/Logout'; // Corrected import (uppercase 'L')
-import Dashboard from './components/Dashboard';  // Assuming you have a Dashboard component
+import Login from './components/Login';
+import Logout from './components/Logout'; 
+import Dashboard from './components/Dashboard';  
 
 class App extends React.Component {
   render() {
